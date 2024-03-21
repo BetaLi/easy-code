@@ -4,6 +4,8 @@ import JsonFormatComponent from "./JsonFromatComponent";
 import UrlEncodeDecodeComponent from "./UrlEncodeDecodeComponent";
 import Base64EncoderDecoder from "./Base64EncoderDecoder";
 import HashGenerateComponent from "./HashGenerator";
+import UUIDGenerator from "./UUIDGenerator";
+
 
 const { Item, ItemGroup } = Menu;
 const {Content, Sider } = Layout;
@@ -27,10 +29,11 @@ const App = () => {
                         onClick={handleClick}
                     >
                         <ItemGroup key="group" title="Format">
-                            <Item key="1">JSONFormat</Item>
-                            <Item key="2">URL Encode&Decode</Item>
-                            <Item key="3">Base64 Encoder&Decoder</Item>
-                            <Item key="4">Hash Generator</Item>
+                            <Item key="1">JSON 格式化</Item>
+                            <Item key="2">URL 加解码</Item>
+                            <Item key="3">Base64 加解码</Item>
+                            <Item key="4">Hash 生成器</Item>
+                            <Item key="5">UUID 生成器</Item>
                         </ItemGroup>
                     </Menu>
                 </Sider>
@@ -47,6 +50,8 @@ const App = () => {
                         {selectedMenu === '2' && <UrlEncodeDecodeComponent />}
                         {selectedMenu === '3' && <Base64EncoderDecoder />}
                         {selectedMenu === '4' && <HashGenerateComponent />}
+                        {selectedMenu === '5' && <UUIDGenerator />}
+                        
                         
                     </Content>
                 </Layout>
