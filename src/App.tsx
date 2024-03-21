@@ -31,7 +31,7 @@ const App = () => {
                     >
                         <ItemGroup key="group" title="文本处理">
                             <Item key="1">JSON 格式化</Item>
-                            <Item key="6">加/去 转义</Item>
+                            <Item key="6">去/加 转义</Item>
                             <Item key="2">URL 加解码</Item>
                             <Item key="3">Base64 加解码</Item>
                             
