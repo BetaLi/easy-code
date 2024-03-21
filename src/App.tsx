@@ -3,6 +3,7 @@ import { Layout, Menu } from 'antd';
 import JsonFormatComponent from "./JsonFromatComponent";
 import UrlEncodeDecodeComponent from "./UrlEncodeDecodeComponent";
 import Base64EncoderDecoder from "./Base64EncoderDecoder";
+import HashGenerateComponent from "./HashGenerator";
 
 const { Item, ItemGroup } = Menu;
 const {Content, Sider } = Layout;
@@ -29,6 +30,7 @@ const App = () => {
                             <Item key="1">JSONFormat</Item>
                             <Item key="2">URL Encode&Decode</Item>
                             <Item key="3">Base64 Encoder&Decoder</Item>
+                            <Item key="4">Hash Generator</Item>
                         </ItemGroup>
                     </Menu>
                 </Sider>
@@ -44,6 +46,7 @@ const App = () => {
                         {selectedMenu === '1' && <JsonFormatComponent />}
                         {selectedMenu === '2' && <UrlEncodeDecodeComponent />}
                         {selectedMenu === '3' && <Base64EncoderDecoder />}
+                        {selectedMenu === '4' && <HashGenerateComponent />}
                         
                     </Content>
                 </Layout>
