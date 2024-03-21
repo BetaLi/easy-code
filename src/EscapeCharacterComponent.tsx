@@ -7,7 +7,7 @@ const { Title, Paragraph } = Typography;
 const EscapeCharacterComponent = () => {
   const [text, setText] = useState('');
   const [processedText, setProcessedText] = useState('');
-  const [action, setAction] = useState('escape');
+  const [action, setAction] = useState('unescape');
 
   const handleChange = (e:{target:{value:any;}}) => {
     setText(e.target.value);
@@ -40,8 +40,8 @@ const EscapeCharacterComponent = () => {
       <Title level={2}>Escape Character Handler</Title>
       <TextArea rows={6} value={text} onChange={handleChange} placeholder="Enter text here..." />
       <Radio.Group value={action} onChange={handleRadioChange} style={{ margin: '20px 0' }}>
-        <Radio value="escape">Add Escape Characters</Radio>
         <Radio value="unescape">Remove Escape Characters</Radio>
+        <Radio value="escape">Add Escape Characters</Radio>
       </Radio.Group>
       <Button type="primary" onClick={handleProcessText}>
         Process Text
