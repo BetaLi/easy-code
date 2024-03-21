@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { Layout, Menu } from 'antd';
 import JsonFormatComponent from "./JsonFromatComponent";
+import UrlEncodeDecodeComponent from "./UrlEncodeDecodeComponent";
 
 const { Item, ItemGroup } = Menu;
 const {Content, Sider } = Layout;
@@ -24,8 +25,8 @@ const App = () => {
                         onClick={handleClick}
                     >
                         <ItemGroup key="group" title="Format">
-                            <Item key="1">JSONFormat 1</Item>
-                            <Item key="2">JSONFormat 2</Item>
+                            <Item key="1">JSONFormat</Item>
+                            <Item key="2">URL Encode&Decode</Item>
                         </ItemGroup>
                     </Menu>
                 </Sider>
@@ -39,7 +40,7 @@ const App = () => {
                         }}
                     >
                         {selectedMenu === '1' && <JsonFormatComponent />}
-                        {selectedMenu === '2' && <div>Content for Menu Item 2</div>}
+                        {selectedMenu === '2' && <UrlEncodeDecodeComponent />}
                     </Content>
                 </Layout>
             </Layout>
