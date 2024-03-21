@@ -38,7 +38,7 @@ const EscapeCharacterComponent = () => {
   return (
     <div>
       <Title level={2}>Escape Character Handler</Title>
-      <TextArea rows={4} value={text} onChange={handleChange} placeholder="Enter text here..." />
+      <TextArea rows={6} value={text} onChange={handleChange} placeholder="Enter text here..." />
       <Radio.Group value={action} onChange={handleRadioChange} style={{ margin: '20px 0' }}>
         <Radio value="escape">Add Escape Characters</Radio>
         <Radio value="unescape">Remove Escape Characters</Radio>
@@ -47,9 +47,9 @@ const EscapeCharacterComponent = () => {
         Process Text
       </Button>
       {processedText && (
-        <Paragraph style={{ marginTop: 20 }}>
+        <Paragraph style={{ marginTop: 20, height: '40vh'}}>
           <Title level={4}>Processed Text:</Title>
-          <TextArea rows={4} value={processedText} readOnly />
+          <TextArea rows={14} value={processedText} readOnly />
         </Paragraph>
       )}
     </div>
