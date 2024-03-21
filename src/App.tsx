@@ -8,6 +8,7 @@ import UUIDGenerator from "./UUIDGenerator";
 import EscapeCharacterComponent from "./EscapeCharacterComponent";
 import QRCodeGenerator from "./QRCodeGenerator";
 import TimestampConverter from "./TimestampConverter";
+import ChatbotComponent from "./ChatbotComponent";
 
 const { Item, ItemGroup } = Menu;
 const {Content, Sider } = Layout;
@@ -43,8 +44,12 @@ const App = () => {
                             <Item key="4">Hash 生成器</Item>
                             <Item key="5">UUID 生成器</Item>
                         </ItemGroup>
+                        <ItemGroup key="group" title="聊天">
+                            <Item key="9">聊天机器人</Item>
 
-                        <ItemGroup key="group" title="时间转换">
+                        </ItemGroup>
+
+                        <ItemGroup key="group" title="其他">
                             <Item key="8">时间戳转换</Item>
                             
                         </ItemGroup>
@@ -67,7 +72,7 @@ const App = () => {
                         {selectedMenu === '6' && <EscapeCharacterComponent />}
                         {selectedMenu === '7' && <QRCodeGenerator />}
                         {selectedMenu === '8' && <TimestampConverter />}
-                        
+                        {selectedMenu === '9' && <ChatbotComponent />}
                         
                         
                         
