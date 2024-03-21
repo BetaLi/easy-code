@@ -44,7 +44,7 @@ const JsonFormatComponent = () => {
                     <textarea
                         style={{ height: 'calc(100% - 40px)', width: '100%', resize: 'none', border: '1px solid rgba(0,0,0,0.1)', borderRadius: '5px', marginBottom: '10px' }}
                         value={formattedJson}
-                        readOnly={false}
+                        readOnly={true}
                         onChange={(e) => setFormattedJson(e.target.value)}
                     />
                     <Button type="primary" onClick={handleCompress}>Compress</Button>

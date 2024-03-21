@@ -1,29 +1,49 @@
 import React, { useState } from 'react';
-import { Layout, Button } from 'antd';
-
+import { Layout, Input, Button } from 'antd';
+const { TextArea } = Input;
 const { Content } = Layout;
 
-const UrlEncodeDecodeComponent = () => {
-    const [inputValue, setInputValue] = useState('');
-    const [encodedValue, setEncodedValue] = useState('');
-    const [decodedValue, setDecodedValue] = useState('');
+const Base64EncoderDecoder = () => {
+  const [inputValue, setInput] = useState('');
+  const [encodedValue, setEncoded] = useState('');
+  const [decodedValue, setDecoded] = useState('');
+  const [error, setError] = useState('');
 
-    const handleEncode = () => {
-        const encoded = encodeURIComponent(inputValue);
-        setEncodedValue(encoded);
-    };
+  const handleEncode = () => {
+    try {
+      const encodedData = btoa(inputValue);
+      setEncoded(encodedData);
+      setDecoded('');
+      setError('');
+    } catch (e) {
+      setError('Error encoding text to Base64.');
+      setEncoded('');
+      setDecoded('');
+    }
+  };
 
-    const handleDecode = () => {
-        const decoded = decodeURIComponent(inputValue);
-        setDecodedValue(decoded);
-    };
+  const handleDecode = () => {
+    try {
+      const decodedData = atob(inputValue);
+      setDecoded(decodedData);
+      setEncoded('');
+      setError('');
+    } catch (e) {
+      setError('Error decoding Base64 text.');
+      setEncoded('');
+      setDecoded('');
+    }
+  };
 
-    const handleInputChange = (e: { target: { value: React.SetStateAction<string>; }; }) => {
-        setInputValue(e.target.value);
-    };
+  const handleInputChange = (e:{ target: { value: any; }; }) => {
+    setInput(e.target.value);
+    setEncoded('');
+    setDecoded('');
+    setError('');
+  };
 
-    return (
-        <Layout style={{ height: '80vh' }}>
+  return (
+    <Layout style={{ height: '80vh' }}>
             <Content style={{ display: 'flex', height: '100%' }}>
                 <div style={{ display: 'flex', flexDirection: 'column', width: '50%', marginRight: '10px' }}>
                     <textarea
@@ -32,8 +52,8 @@ const UrlEncodeDecodeComponent = () => {
                         value={inputValue}
                         onChange={handleInputChange}
                     />
-                    <Button type="primary" onClick={handleEncode} style={{ marginBottom: '10px' }}>URL Encode</Button>
-                    <Button type="primary" onClick={handleDecode}>URL Decode</Button>
+                    <Button type="primary" onClick={handleEncode} style={{ marginBottom: '10px' }}>Base64 Encode</Button>
+                    <Button type="primary" onClick={handleDecode}>Base64 Decode</Button>
                 </div>
                 <div style={{ display: 'flex', flexDirection: 'column', width: '50%' }}>
                     <textarea
@@ -51,7 +71,7 @@ const UrlEncodeDecodeComponent = () => {
                 </div>
             </Content>
         </Layout>
-    );
+  );
 };
 
-export default UrlEncodeDecodeComponent;
+export default Base64EncoderDecoder;
