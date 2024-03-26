@@ -1,6 +1,7 @@
 import React, { useState, useRef, useEffect } from 'react';
 import { Input, Button } from 'antd';
 import axios from 'axios';
+import ReactMarkdown from 'react-markdown'; // 导入 react-markdown
 
 interface Message {
     role: 'user' | 'assistant';
@@ -69,8 +70,29 @@ const ChatbotComponent = () => {
             <div ref={chatContainerRef} style={{ flex: 1, overflowY: 'auto', marginBottom: '10px' }}>
                 {conversation.map((message, index) => (
                     <div key={index} style={{ marginBottom: '5px' }}>
-                        <span style={{ fontWeight: message.role === 'user' ? 'bold' : 'normal' }}>{message.role === 'user' ? 'You: ' : 'Bot: '}</span>
-                        <span>{message.content}</span>
+                        <div style={{ marginBottom: '5px' }}>
+
+                            {/* 使用条件渲染为机器人回复添加浅蓝色背景 */}
+                            {message.role === 'assistant' ? (
+                                <div
+                                    style={{
+                                        backgroundColor: '#cfe6ff',
+                                        padding: '10px',
+                                        borderRadius: '5px',
+                                        marginBottom: '5px',
+                                        boxShadow: '0 0 5px rgba(0, 0, 0, 0.1)',
+                                    }}
+                                >
+                                    <ReactMarkdown children={message.content} />
+                                </div>
+                            ) : (
+                                    <ReactMarkdown children={`**YOU:** ${message.content}`} />
+                                )}
+                        </div>
+                        {/* 添加分隔线，仅在机器人回复后且不是最后一条消息时显示 */}
+                        {message.role === 'assistant' && index < conversation.length - 1 && conversation[index + 1].role === 'user' && (
+                            <hr style={{ margin: '5px 0', border: 'none', borderBottom: '2px dashed #ccc' }} />
+                        )}
                     </div>
                 ))}
             </div>
