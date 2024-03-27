@@ -18,8 +18,6 @@ const JsonFormatComponent = () => {
         try {
             const formattedValue = JSON.stringify(JSON.parse(inputValue), null, 4);
             setFormattedJson(formattedValue);
-
-            console.info(inputValue);
         } catch (error) {
             setFormattedJson('Invalid JSON');
         }
