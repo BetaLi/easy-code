@@ -25,7 +25,7 @@ const ChatbotComponent = () => {
     const sendMessage = async () => {
         if (!inputText) return;
 
-        console.log(inputText);
+        console.info(inputText);
         const userMessage: Message = { role: 'user', content: inputText };
         const newConversation = [...conversation, userMessage];
         setConversation(newConversation);
