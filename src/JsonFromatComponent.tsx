@@ -19,7 +19,7 @@ const JsonFormatComponent = () => {
             const formattedValue = JSON.stringify(JSON.parse(inputValue), null, 4);
             setFormattedJson(formattedValue);
 
-            console.log("inputJson", inputValue);
+            console.log(inputValue);
         } catch (error) {
             setFormattedJson('Invalid JSON');
         }
