@@ -9,6 +9,7 @@ import EscapeCharacterComponent from "./EscapeCharacterComponent";
 import QRCodeGenerator from "./QRCodeGenerator";
 import TimestampConverter from "./TimestampConverter";
 import ChatbotComponent from "./ChatbotComponent";
+import TextDiffComponent from "./TextDiffComponent";
 
 const { Item, ItemGroup } = Menu;
 const {Content, Sider } = Layout;
@@ -33,7 +34,7 @@ const App = () => {
                     >
                         <ItemGroup key="group" title="文本处理">
                             <Item key="1">JSON 格式化</Item>
-                            <Item key="6">去/加 转义</Item>
+                            <Item key="6">文本比对</Item>
                             <Item key="2">URL 加解码</Item>
                             <Item key="3">Base64 加解码</Item>
                             
@@ -69,7 +70,7 @@ const App = () => {
                         {selectedMenu === '3' && <Base64EncoderDecoder />}
                         {selectedMenu === '4' && <HashGenerateComponent />}
                         {selectedMenu === '5' && <UUIDGenerator />}
-                        {selectedMenu === '6' && <EscapeCharacterComponent />}
+                        {selectedMenu === '6' && <TextDiffComponent />}
                         {selectedMenu === '7' && <QRCodeGenerator />}
                         {selectedMenu === '8' && <TimestampConverter />}
                         {selectedMenu === '9' && <ChatbotComponent />}
