@@ -68,7 +68,7 @@ const JsonFormatComponent = () => {
     return (
         <Layout style={{ height: '80vh' }}>
             <Content style={{ display: 'flex', height: '100%' }}>
-                <div style={{ display: 'flex', flexDirection: 'column', width: '45%', marginRight: '10px', height: '100%', border: '1px solid rgba(0,0,0,0.1)', borderRadius: '5px' }}>
+                <div style={{ display: 'flex', flexDirection: 'column', width: '50%', marginRight: '10px', height: '100%', border: '1px solid rgba(0,0,0,0.1)', borderRadius: '5px' }}>
                     <div style={{  height: '100%', padding: '0 0 10px 0'}}>
                         <textarea
                             style={{ height: '100%', width: '100%', padding:'10px', resize: 'none', border: 'none', outline: 'none' }}
@@ -82,7 +82,7 @@ const JsonFormatComponent = () => {
                         <Button type="text" style={{  }} onClick={handleEscapeString}>转义</Button>
                     </div>
                 </div>
-                <div style={{ display: 'flex', flexDirection: 'column', width: '55%', marginLeft: '10px', height: '100%', border: '1px solid rgba(0,0,0,0.1)', borderRadius: '5px' }}>
+                <div style={{ display: 'flex', flexDirection: 'column', width: '50npm%', marginLeft: '10px', height: '100%', border: '1px solid rgba(0,0,0,0.1)', borderRadius: '5px' }}>
                     <div style={{ height: '100%', overflow: 'auto'}}>
                         <SyntaxHighlighter language="json" style={docco}>
                             {formattedJson}
