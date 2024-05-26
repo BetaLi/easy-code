@@ -12,7 +12,7 @@ import ChatbotComponent from "./ChatbotComponent";
 import TextDiffComponent from "./TextDiffComponent";
 
 const { Item, ItemGroup } = Menu;
-const {Content, Sider } = Layout;
+const {Content, Sider,Footer } = Layout;
 
 const App = () => {
     const [selectedMenu, setSelectedMenu] = useState('1');
@@ -24,7 +24,7 @@ const App = () => {
     return (
         <Layout>
             <Layout>
-                <Sider width={200} className="site-layout-background">
+                <Sider width={170} className="site-layout-background">
                     <Menu
                         mode="inline"
                         selectedKeys={[selectedMenu]}
@@ -74,10 +74,10 @@ const App = () => {
                         {selectedMenu === '7' && <QRCodeGenerator />}
                         {selectedMenu === '8' && <TimestampConverter />}
                         {selectedMenu === '9' && <ChatbotComponent />}
-                        
-                        
-                        
                     </Content>
+                    <Footer style={{ textAlign: 'center', fontSize:'x-small' }}>
+                        <a href="https://beian.miit.gov.cn/" style={{color:'gray'}} target="_blank">京ICP备2024067514号-1</a>
+                    </Footer>
                 </Layout>
             </Layout>
         </Layout>
