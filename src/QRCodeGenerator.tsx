@@ -48,7 +48,7 @@ const QRCodeGenerator = () => {
     };
 
     return (
-        <div style={{ maxWidth: 800, margin: '0 auto' }}>
+        <div style={{ maxWidth: 1300, margin: '0 auto' }}>
             <Title level={2}>QR Code Generator</Title>
 
             <Input
