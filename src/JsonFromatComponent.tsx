@@ -82,7 +82,7 @@ const JsonFormatComponent = () => {
                         <Button type="text" style={{  }} onClick={handleEscapeString}>转义</Button>
                     </div>
                 </div>
-                <div style={{ display: 'flex', flexDirection: 'column', width: '50npm%', marginLeft: '10px', height: '100%', border: '1px solid rgba(0,0,0,0.1)', borderRadius: '5px' }}>
+                <div style={{ display: 'flex', flexDirection: 'column', width: '50%', marginLeft: '10px', height: '100%', border: '1px solid rgba(0,0,0,0.1)', borderRadius: '5px' }}>
                     <div style={{ height: '100%', overflow: 'auto'}}>
                         <SyntaxHighlighter language="json" style={docco}>
                             {formattedJson}
