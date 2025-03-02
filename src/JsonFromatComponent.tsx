@@ -86,7 +86,6 @@ const JsonFormatComponent = () => {
         navigator.clipboard.writeText(formattedJson);
     };
 
-
     // 保持其他操作方法不变
     const handleOperation = (output: string, operation: string) => {
         setHistory(prev => [
