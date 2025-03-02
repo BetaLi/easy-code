@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { Layout, Button, List } from 'antd';
+import {Layout, Button, List, message} from 'antd';
 import { Light as SyntaxHighlighter } from 'react-syntax-highlighter';
 import json from 'react-syntax-highlighter/dist/esm/languages/hljs/json';
 import { docco } from 'react-syntax-highlighter/dist/esm/styles/hljs';
@@ -115,48 +115,74 @@ const JsonFormatComponent = () => {
         ]);
     };
 
+    // 新增点击处理函数
+    const handleHistoryClick = (item: HistoryItem) => {
+        setInputJson(item.input);          // 回填原始输入内容‌:ml-citation{ref="1,7" data="citationList"}
+        setFormattedJson(item.output);     // 同步显示格式化结果‌:ml-citation{ref="3,4" data="citationList"}
+    };
+
+    const clearHistory = () => {
+        setHistory([]);
+        message.success('History cleared');
+    };
+
+
     return (
-        <Layout style={{ height: '100vh' }}>
-            <Content style={{ display: 'flex', height: '100%' }}>
-                <div style={{ display: 'flex', flexDirection: 'column', width: '40%', marginRight: '10px', height: '100%', border: '1px solid rgba(0,0,0,0.1)', borderRadius: '5px' }}>
-                    <div style={{  height: '100%', padding: '0 0 10px 0'}}>
+        <div>
+            <Layout style={{ height: '85vh' }}>
+                <Content style={{ display: 'flex', height: '100%' }}>
+                    <div style={{ display: 'flex', flexDirection: 'column', width: '40%', marginRight: '10px', height: '100%', border: '1px solid rgba(0,0,0,0.1)', borderRadius: '5px' }}>
+                        <div style={{  height: '100%', padding: '0 0 10px 0'}}>
                         <textarea
                             style={{ height: '100%', width: '100%', padding:'10px', resize: 'none', border: 'none', outline: 'none' }}
                             placeholder="在此处输入 JSON 字符串..."
                             value={inputJson}
                             onChange={handleInputChange}
                         />
+                        </div>
+                        <div style={{ padding: '0 10px 10px 10px'  }}>
+                            <Button type="text" onClick={handleUnescapeString}>去转义</Button>
+                            <Button type="text" style={{  }} onClick={handleEscapeString}>转义</Button>
+                        </div>
                     </div>
-                    <div style={{ padding: '0 10px 10px 10px'  }}>
-                        <Button type="text" onClick={handleUnescapeString}>去转义</Button>
-                        <Button type="text" style={{  }} onClick={handleEscapeString}>转义</Button>
+                    <div style={{ display: 'flex', flexDirection: 'column', width: '60%', marginLeft: '10px', height: '100%', border: '1px solid rgba(0,0,0,0.1)', borderRadius: '5px' }}>
+                        <div style={{ height: '100%', overflow: 'auto'}}>
+                            <SyntaxHighlighter language="json" style={docco}>
+                                {formattedJson}
+                            </SyntaxHighlighter>
+                        </div>
+                        <div style={{ marginTop: '10px', padding: '0 0 10px 10px' }}>
+                            <Button type="text" onClick={handleCompress}>压缩</Button>
+                            <Button type="text" style={{  }} onClick={handleCopy}>复制</Button>
+                        </div>
                     </div>
-                </div>
-                <div style={{ display: 'flex', flexDirection: 'column', width: '60%', marginLeft: '10px', height: '100%', border: '1px solid rgba(0,0,0,0.1)', borderRadius: '5px' }}>
-                    <div style={{ height: '100%', overflow: 'auto'}}>
-                        <SyntaxHighlighter language="json" style={docco}>
-                            {formattedJson}
-                        </SyntaxHighlighter>
-                    </div>
-                    <div style={{ marginTop: '10px', padding: '0 0 10px 10px' }}>
-                        <Button type="text" onClick={handleCompress}>压缩</Button>
-                        <Button type="text" style={{  }} onClick={handleCopy}>复制</Button>
-                    </div>
-                </div>
-            </Content>
+                </Content>
+            </Layout>
 
             <div style={{ marginTop: 10, borderTop: '1px solid #f0f0f0' }}>
+                <span
+                    onClick={history.length > 0 ? clearHistory : undefined}
+                    style={{
+                        cursor: history.length > 0 ? 'pointer' : 'not-allowed',
+                        color: history.length > 0 ? '#1890ff' : '#bfbfbf'
+                    }}
+                >
+                Clear History
+                </span>
+
                 <List
                     bordered
                     dataSource={history}
+
                     renderItem={(item) => (
-                        <List.Item onClick={() => {/* 历史恢复逻辑 */}}>
+                        <List.Item style={{ cursor: 'pointer', background: '#f5f5f5'}} onClick={() => handleHistoryClick(item)}>
+                            <span style={{ marginRight: 20 }}>{new Date(item.timestamp).toLocaleString()}</span>
                             {item.input}
                         </List.Item>
                     )}
                 />
             </div>
-        </Layout>
+        </div>
     );
 };
 
