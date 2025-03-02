@@ -54,6 +54,7 @@ const ChatbotComponent = () => {
         }
     };
 
+
     const handleInputChange = (e: React.ChangeEvent<HTMLTextAreaElement>) => {
         setInputText(e.target.value);
     };
