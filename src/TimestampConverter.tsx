@@ -7,11 +7,18 @@ const { Title, Paragraph } = Typography;
 const dateFormat = 'YYYY-MM-DD HH:mm:ss';
 
 const timeZones = [
-  { label: '美东 (US & Canada)', tz: 'America/New_York' },
-  { label: '美西 (US & Canada)', tz: 'America/Los_Angeles' },
-  { label: '墨西哥 (Russia)', tz: 'Europe/Moscow' },
-  { label: '欧洲 (Germany)', tz: 'Europe/Berlin' },
-  { label: '非洲 (Africa)', tz: 'Africa/Harare' },
+    { label: '中国 (北京时间)', tz: 'Asia/Shanghai' }, // UTC+8（无夏令时）‌:ml-citation{ref="2,3" data="citationList"}
+
+    // 新增时区
+    { label: '哈萨克斯坦 (Almaty)', tz: 'Asia/Almaty' },  // UTC+6（无夏令时）‌:ml-citation{ref="3" data="citationList"}
+    { label: '越南 (Ho Chi Minh)', tz: 'Asia/Ho_Chi_Minh' }, // UTC+7（无夏令时）‌:ml-citation{ref="2" data="citationList"}
+    { label: '泰国 (Bangkok)', tz: 'Asia/Bangkok' }, // UTC+7（无夏令时）‌:ml-citation{ref="2" data="citationList"}
+
+    // 原有时区（修正墨西哥错误）
+    { label: '美东 (US & Canada)', tz: 'America/New_York' },  // UTC-5/UTC-4（夏令时）‌:ml-citation{ref="1" data="citationList"}
+    { label: '美西 (US & Canada)', tz: 'America/Los_Angeles' }, // UTC-8/UTC-7（夏令时）‌:ml-citation{ref="1" data="citationList"}
+    { label: '欧洲 (Germany)', tz: 'Europe/Berlin' }, // UTC+1/UTC+2（夏令时）‌:ml-citation{ref="1" data="citationList"}
+    { label: '非洲 (Africa)', tz: 'Africa/Harare' } // UTC+2（无夏令时）‌:ml-citation{ref="1" data="citationList"}
 ];
 
 // 定义时区类型
