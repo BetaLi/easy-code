@@ -39,8 +39,29 @@ const JsonFormatComponent = () => {
                 { input: inputValue, output: formattedValue, timestamp: Date.now(), operation: 'format' },
                 ...prev.slice(0, 9)
             ]);
-        } catch (error) {
-            setFormattedJson('Invalid JSON');
+        } catch (err) {
+            const error = err as Error;
+            const errorMsg = error.message;
+            const regex = /position (?<pos>\d+)/d;
+            const match = error.message.match(regex);
+            // @ts-ignore
+            const errorPos = match?.groups?.pos ? parseInt(match.groups.pos) : -1;
+
+            // 构建带标记的错误预览
+            let errorPreview = inputValue;
+            if (errorPos > -1) {
+                const start = Math.max(0, errorPos - 10);
+                const end = Math.min(inputValue.length, errorPos + 10);
+                errorPreview =
+                    inputValue.slice(start, errorPos) + inputValue.slice(errorPos, end)
+            }
+
+            // @ts-ignore
+            // 组合错误信息
+            setFormattedJson(`JSON解析失败：
+    错误类型：${errorMsg}
+    错误位置：${errorPos > -1 ? `字符索引 ${errorPos}` : '未知位置'}
+    错误上下文：${errorPreview}`);
         }
     };
 
@@ -97,7 +118,7 @@ const JsonFormatComponent = () => {
     return (
         <Layout style={{ height: '100vh' }}>
             <Content style={{ display: 'flex', height: '100%' }}>
-                <div style={{ display: 'flex', flexDirection: 'column', width: '50%', marginRight: '10px', height: '100%', border: '1px solid rgba(0,0,0,0.1)', borderRadius: '5px' }}>
+                <div style={{ display: 'flex', flexDirection: 'column', width: '40%', marginRight: '10px', height: '100%', border: '1px solid rgba(0,0,0,0.1)', borderRadius: '5px' }}>
                     <div style={{  height: '100%', padding: '0 0 10px 0'}}>
                         <textarea
                             style={{ height: '100%', width: '100%', padding:'10px', resize: 'none', border: 'none', outline: 'none' }}
@@ -111,7 +132,7 @@ const JsonFormatComponent = () => {
                         <Button type="text" style={{  }} onClick={handleEscapeString}>转义</Button>
                     </div>
                 </div>
-                <div style={{ display: 'flex', flexDirection: 'column', width: '50%', marginLeft: '10px', height: '100%', border: '1px solid rgba(0,0,0,0.1)', borderRadius: '5px' }}>
+                <div style={{ display: 'flex', flexDirection: 'column', width: '60%', marginLeft: '10px', height: '100%', border: '1px solid rgba(0,0,0,0.1)', borderRadius: '5px' }}>
                     <div style={{ height: '100%', overflow: 'auto'}}>
                         <SyntaxHighlighter language="json" style={docco}>
                             {formattedJson}

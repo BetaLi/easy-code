@@ -10,6 +10,7 @@ import QRCodeGenerator from "./QRCodeGenerator";
 import TimestampConverter from "./TimestampConverter";
 import ChatbotComponent from "./ChatbotComponent";
 import TextDiffComponent from "./TextDiffComponent";
+import  TextCompressor from "./TextCompressor";
 
 const { Item, ItemGroup } = Menu;
 const {Content, Sider,Footer } = Layout;
@@ -34,6 +35,7 @@ const App = () => {
                     >
                         <ItemGroup key="group" title="文本处理">
                             <Item key="1">JSON 格式化</Item>
+                            <Item key="10">字符统计</Item>
                             <Item key="6">文本比对</Item>
                             <Item key="2">URL 加解码</Item>
                             <Item key="3">Base64 加解码</Item>
@@ -74,6 +76,7 @@ const App = () => {
                         {selectedMenu === '7' && <QRCodeGenerator />}
                         {selectedMenu === '8' && <TimestampConverter />}
                         {selectedMenu === '9' && <ChatbotComponent />}
+                        {selectedMenu === '10' && <TextCompressor />}
                     </Content>
                     <Footer style={{ textAlign: 'center', fontSize:'x-small' }}>
                         <a href="https://beian.miit.gov.cn/" style={{color:'gray'}} target="_blank">京ICP备2024067514号-1</a>
