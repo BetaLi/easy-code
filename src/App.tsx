@@ -4,11 +4,12 @@ import JsonFormatComponent from "./JsonFromatComponent";
 import UrlEncodeDecodeComponent from "./UrlEncodeDecodeComponent";
 import Base64EncoderDecoder from "./Base64EncoderDecoder";
 import HashGenerateComponent from "./HashGenerator";
-import UUIDGenerator from "./UUIDGenerator";
+import IDGenerator from "./IDGenerator";
 import EscapeCharacterComponent from "./EscapeCharacterComponent";
 import QRCodeGenerator from "./QRCodeGenerator";
 import TimestampConverter from "./TimestampConverter";
-import ChatbotComponent from "./ChatbotComponent";
+import FortuneTeller from "./FortuneTeller";
+import AIAssistant from "./AIAssistant";
 import TextDiffComponent from "./TextDiffComponent";
 import  TextCompressor from "./TextCompressor";
 
@@ -44,12 +45,11 @@ const App = () => {
 
                         <ItemGroup key="group" title="生成器">
                             <Item key="7">二维码 生成器</Item>
-                            <Item key="4">Hash 生成器</Item>
-                            <Item key="5">UUID 生成器</Item>
+                            <Item key="5">ID 生成器</Item>
                         </ItemGroup>
-                        <ItemGroup key="group" title="聊天">
-                            <Item key="9">聊天机器人</Item>
-
+                        <ItemGroup key="group" title="AI">
+                            <Item key="91">AI助手</Item>
+                            {/*<Item key="9">算命大师</Item>*/}
                         </ItemGroup>
 
                         <ItemGroup key="group" title="其他">
@@ -70,12 +70,12 @@ const App = () => {
                         {selectedMenu === '1' && <JsonFormatComponent />}
                         {selectedMenu === '2' && <UrlEncodeDecodeComponent />}
                         {selectedMenu === '3' && <Base64EncoderDecoder />}
-                        {selectedMenu === '4' && <HashGenerateComponent />}
-                        {selectedMenu === '5' && <UUIDGenerator />}
+                        {selectedMenu === '5' && <IDGenerator />}
                         {selectedMenu === '6' && <TextDiffComponent />}
                         {selectedMenu === '7' && <QRCodeGenerator />}
                         {selectedMenu === '8' && <TimestampConverter />}
-                        {selectedMenu === '9' && <ChatbotComponent />}
+                        {selectedMenu === '9' && <FortuneTeller />}
+                        {selectedMenu === '91' && <AIAssistant />}
                         {selectedMenu === '10' && <TextCompressor />}
                     </Content>
                     <Footer style={{ textAlign: 'center', fontSize:'x-small' }}>
