@@ -214,6 +214,15 @@ const JsonFormatComponent = () => {
                             <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', width: '100%' }}>
                                 <div>
                                     <span style={{ marginRight: 20 }}>{new Date(item.timestamp).toLocaleString()}</span>
+                                    <span
+                                        style={{ color: 'gray', cursor: 'pointer' }}
+                                        onClick={(e) => {
+                                            e.stopPropagation(); // 阻止事件冒泡
+                                            handleDeleteHistoryItem(item.timestamp);
+                                        }}
+                                    >
+                                        删除
+                                    </span>
                                     <div>{item.input}</div>
                                     {item.note ? (
                                         <div
@@ -237,16 +246,6 @@ const JsonFormatComponent = () => {
                                         </div>
                                     )}
                                 </div>
-                                <Button
-                                    type="text"
-                                    danger
-                                    onClick={(e) => {
-                                        e.stopPropagation(); // 阻止事件冒泡
-                                        handleDeleteHistoryItem(item.timestamp);
-                                    }}
-                                >
-                                    删除
-                                </Button>
                             </div>
                         </List.Item>
                     )}
